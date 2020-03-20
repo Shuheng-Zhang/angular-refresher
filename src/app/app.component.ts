@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-refresher';
+
+  persons = ['Ken', 'Li', 'Jack', 'Zhang'];
+
+  onPersonCreated(name: string) {
+    this.persons.push(name);
+  }
 }
