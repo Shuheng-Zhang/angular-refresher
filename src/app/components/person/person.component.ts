@@ -12,6 +12,10 @@ export class PersonComponent implements OnInit {
   constructor(private personService: PersonService) {
   }
 
+  onRemovePerson(name: string) {
+    this.personService.removePerson(name);
+  }
+
   ngOnInit(): void {
     this.personList = this.personService.persons;
   }

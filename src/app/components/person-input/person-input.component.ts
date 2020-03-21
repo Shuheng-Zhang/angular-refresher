@@ -20,7 +20,5 @@ export class PersonInputComponent implements OnInit {
     console.log(`Target: ${this.personInfoInput}`);
     this.personService.addPerson(this.personInfoInput);
     this.personInfoInput = '';
-
-    console.log(this.personService.persons);
   }
 }
