@@ -2,6 +2,7 @@ import { PersonComponent, PersonInputComponent, PersonService } from './componen
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [PersonService],
   bootstrap: [AppComponent]
