@@ -19,12 +19,12 @@ export class PersonComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.personList = this.personService.persons;
-
+    // this.personList = this.personService.persons;
     // Subscribe the updated data
     this.personListSubcription = this.personService.personsChanged.subscribe(persons => {
       this.personList = persons;
     });
+    this.personService.fetchPersons();
   }
 
   // To avoid the memory leak

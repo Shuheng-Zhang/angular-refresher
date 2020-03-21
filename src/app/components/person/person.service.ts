@@ -1,12 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PersonService {
 
-  persons = ['Ken', 'Li', 'Jack', 'Zhang'];
+  persons: string[];
 
   personsChanged = new Subject<string[]>();
+
+  constructor(private httpClient: HttpClient) {}
+
+  fetchPersons() {
+    this.httpClient.get<any>('https://swapi.co/api/people/').pipe(map(tmpData => {
+      return tmpData.results.map(r => r.name);
+    })).subscribe(res => {
+      console.log(res);
+      this.persons = [...res];
+      this.personsChanged.next(res);
+    });
+  }
 
   addPerson(username: string) {
     this.persons.push(username);
