@@ -11,6 +11,8 @@ export class PersonComponent implements OnInit, OnDestroy {
   personList: string[];
   private personListSubcription: Subscription;
 
+  isLoaded = false;
+
   constructor(private personService: PersonService) {
   }
 
@@ -23,7 +25,12 @@ export class PersonComponent implements OnInit, OnDestroy {
     // Subscribe the updated data
     this.personListSubcription = this.personService.personsChanged.subscribe(persons => {
       this.personList = persons;
+
+      this.isLoaded = false;
     });
+
+    this.isLoaded = true;
+
     this.personService.fetchPersons();
   }
 
